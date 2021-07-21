@@ -68,7 +68,7 @@ class ComicController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Comic $comic)
     {
         //
     }
@@ -79,8 +79,11 @@ class ComicController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Comic $comic)
     {
-        //
+        $comic -> delete();
+        return redirect()
+            ->route('comic.index')
+            ->with('deleted', "Birra '" . "' cancellata correttamente");
     }
 }

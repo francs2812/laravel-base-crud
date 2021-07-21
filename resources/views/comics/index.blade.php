@@ -23,7 +23,16 @@
                         <a href="{{ route("comic.show", $item->id, $item -> title, $item -> description, $item -> price, $item -> thumb) }}" class="btn btn-success">SHOW</a>
                     </td>
                     <td>EDIT</td>
-                    <td>DELETE</td>
+                    <td>
+                        <form 
+                        action=" {{ route('comic.destroy', $item -> id) }} "
+                        method="post"
+                        >
+                            @csrf
+                            @method('DELETE')
+                            <input type="submit" class="btn btn-danger" value="DELETE">
+                        </form>
+                    </td>
                 </tr>
             @endforeach
     
